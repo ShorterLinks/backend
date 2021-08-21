@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  backend:
+    image: node:14.17.3-alpine
+    container_name: shorter-backend
+    # environment: 
+    #   - DATABASE_ADRESS='mongodb+srv://admin:admin123@cluster0.ewwpc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    #   - PORT=3000
+    #   - NODE_ENV='development'
+    #   - SECRET='keyboard cat'
+    #   - JWT_SECRET='jwtsecret'  
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+volumes:
+  data:
