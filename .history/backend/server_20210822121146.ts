@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.SECRET ?? "secret"));
 
 app.use('/', router);
-// app.get('/', (req, res) => res.end('success'));
+app.get('/', (req, res) => res.end('success'));
 
 const PORT: number = Number(process.env.PORT ?? 3002);
 
