@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 export async function connectDB () {
   try {
 
-    if(process.env.DATABASE_ADRESS === undefined) throw new Error('There is no dburi in env')
+    if(process.env.DATABASE_ADRESS === undefined) throw new Error('There is no dburi.')
     
     const dburi:string = process.env.DATABASE_ADRESS;
-    
+
     await mongoose.connect(dburi, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
