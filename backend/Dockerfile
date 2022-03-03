@@ -7,8 +7,8 @@ ENV DATABASE_ADRESS='mongodb+srv://admin:admin123@cluster0.ewwpc.mongodb.net/myF
 ENV PORT=3000
 ENV NODE_ENV='development'
 ENV SECRET='keyboard cat'
-ENV JWT_SECRET='jwtsecret'  
-RUN npm install
+ENV JWT_SECRET='jwtsecret'
 COPY . .
+RUN npm install
 EXPOSE 3000:3000
 CMD ["npm", "run", "start"]

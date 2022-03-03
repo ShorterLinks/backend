@@ -13,13 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser(process.env.SECRET ?? "secret"));
 
-app.use('/', router);
+app.use('/api', router);
 // app.get('/', (req, res) => res.end('success'));
 
 const PORT: number = Number(process.env.PORT ?? 3002);
 
 app.listen(PORT, async () => {
-  await connectDB()
+  // await connectDB()
   console.log(`App is listening on port ${PORT}!`);
   console.log('---------------------------------------------');
 });
