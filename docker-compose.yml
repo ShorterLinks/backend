@@ -1,9 +1,31 @@
 version: '3.4'
 
 services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=db_username
+    #   - MONGO_INITDB_ROOT_PASSWORD=temporaryPassword123
+    #   - MONGO_INITDB_DATABASE=database_name
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+      - ./mongo-volume:/data/db
+    ports:
+      - 27017:27017
   backend:
     image: node:14.17.3-alpine
+    depends_on:
+      - 'mongodb'
     container_name: shorter-backend
+    environment:
+      - DATABASE_ADRESS='mongodb://mongodb:27017/'
+      # - DATABASE_ADRESS='mongodb://host.docker.internal:27017/'
+      - PORT=3000
+      - NODE_ENV='development'
+      - SECRET='keyboard cat'
+      - JWT_SECRET='jwtsecret'
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -12,17 +34,5 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-  database:
-    image: mongo
-    container_name: database_mongo
-    environment:
-      - MONGO_INITDB_DATABASE=database_name
-      - MONGO_INITDB_ROOT_USERNAME=db_username
-      - MONGO_INITDB_ROOT_PASSWORD=temporaryPassword123!@#
-    volumes:
-      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
-      - ./mongo-volume:/data/db\
-    ports:
-      - 27017-27019:27017-27019
 volumes:
   data:

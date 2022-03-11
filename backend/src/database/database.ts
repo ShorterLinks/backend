@@ -7,6 +7,9 @@ export async function connectDB () {
     
     const dburi:string = process.env.DATABASE_ADRESS;
 
+    // const dburi: string = `mongodb://mongodb:27017/`;
+    // const dburi: string = `mongodb://host.docker.internal:27017/`;
+
     await mongoose.connect(dburi, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
