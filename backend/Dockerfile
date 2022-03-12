@@ -3,11 +3,6 @@ WORKDIR /app/backend
 COPY package.json package.json 
 COPY package-lock.json package-lock.json
 COPY tsconfig.json tsconfig.json
-# ENV DATABASE_ADRESS='mongodb://mongo:27017'
-# ENV PORT=3000
-# ENV NODE_ENV='development'
-# ENV SECRET='keyboard cat'
-# ENV JWT_SECRET='jwtsecret'
 COPY . .
 RUN npm install
 EXPOSE 3000:3000
