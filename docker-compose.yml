@@ -10,7 +10,7 @@ services:
     ports:
       - 27017:27017
   backend:
-    image: node:14.17.3-alpine
+    image: node:16.14.0-alpine
     depends_on:
       - 'database'
     container_name: shorter-backend
