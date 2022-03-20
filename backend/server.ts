@@ -18,7 +18,7 @@ app.use('/api', router);
 const PORT: number = Number(process.env.PORT ?? 3002);
 
 app.listen(PORT, async () => {
-  await connectDB()
+  await connectDB();
   console.log(`App is listening on port ${PORT}!`);
   console.log('---------------------------------------------');
 });
