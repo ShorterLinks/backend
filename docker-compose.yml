@@ -5,6 +5,8 @@ services:
     image: mongo
     container_name: mongodb
     restart: always
+    logging:
+      driver: none
     volumes:
       - ./mongo-volume:/data/db
     ports:
