@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "prett": "prettier -w ./**/*.ts",
-    "prettCheck": "prettier --check ./**/*.ts",
+    "prettier": "prettier -w ./**/*.ts",
+    "prettierCheck": "prettier --check ./**/*.ts",
     "start": "ts-node-dev server.ts"
   },
   "keywords": [],
