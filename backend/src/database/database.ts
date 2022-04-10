@@ -1,17 +1,16 @@
 import mongoose from 'mongoose';
 
-export async function connectDB () {
+export async function connectDB() {
   try {
+    if (process.env.DATABASE_ADRESS === undefined) throw new Error('There is no dburi.');
 
-    if(process.env.DATABASE_ADRESS === undefined) throw new Error('There is no dburi.')
-    
-    const dburi:string = process.env.DATABASE_ADRESS;
+    const dburi: string = process.env.DATABASE_ADRESS;
 
     await mongoose.connect(dburi, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
-      useCreateIndex: true
+      useCreateIndex: true,
     });
     console.log('Successful connection to the database');
   } catch (error) {
@@ -19,6 +18,6 @@ export async function connectDB () {
   }
 }
 
-export * from './models/Errors';
-export * from './models/Links';
+export * from './models/Error';
+export * from './models/Link';
 export * from './models/User';

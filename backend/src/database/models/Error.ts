@@ -1,8 +1,7 @@
+import { model, Schema } from 'mongoose';
+import { IError } from '../interfaces';
 
-import { model, Schema } from "mongoose"
-import { IErrors, Devices } from "../interfaces";
-
-const ErrorSchema = new Schema<IErrors>({
+const ErrorSchema = new Schema<IError>({
   userUuid: {
     required: false,
     type: String,
@@ -30,7 +29,4 @@ const ErrorSchema = new Schema<IErrors>({
   },
 });
 
-export const errorModel = model<IErrors>('LinkModel', ErrorSchema);
-
-
-
+export const errorModel = model<IError>('ErrorModel', ErrorSchema);

@@ -1,9 +1,9 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
-import { connectDB } from "./src/database/database";
+import { connectDB } from './src/database/database';
 
-import { router } from "./src/routes/mainRoutes";
+import { router } from './src/routes/mainRoutes';
 
 const app: express.Application = express();
 
@@ -11,7 +11,7 @@ app.set('x-powered-by', false);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser(process.env.SECRET ?? "secret"));
+app.use(cookieParser(process.env.SECRET ?? 'secret'));
 
 app.use('/api', router);
 

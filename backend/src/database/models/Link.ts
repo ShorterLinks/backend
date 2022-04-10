@@ -1,7 +1,7 @@
-import { model, Schema } from "mongoose"
-import { ILinks } from "../interfaces";
+import { model, Schema } from 'mongoose';
+import { ILink } from '../interfaces';
 
-const LinkSchema = new Schema<ILinks>({
+const LinkSchema = new Schema<ILink>({
   userUuid: {
     required: false,
     type: String,
@@ -17,7 +17,7 @@ const LinkSchema = new Schema<ILinks>({
   },
   verified: {
     required: true,
-    type: Boolean,
+    type: String,
     default: false,
   },
   clickCounter: {
@@ -36,10 +36,9 @@ const LinkSchema = new Schema<ILinks>({
     default: '',
   },
   group: {
-    required: true,
+    required: false,
     type: String,
-    default: 'main',
   },
 });
 
-export const linkSchema = model<ILinks>('LinkModel', LinkSchema);
+export const linkSchema = model<ILink>('LinkModel', LinkSchema);
