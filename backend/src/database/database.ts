@@ -18,3 +18,7 @@ export async function connectDB () {
     console.error('Error with connecting to database: \n', error);
   }
 }
+
+export * from './models/Errors';
+export * from './models/Links';
+export * from './models/User';
